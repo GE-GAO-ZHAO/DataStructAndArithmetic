@@ -26,7 +26,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");
-        TestType type = TestTypeMergeLinkList;
+        TestType type = TestTypeLinkListTraverse;
         switch (type) {
             case TestTypeLinkListTraverse:
             {
@@ -43,18 +43,26 @@ int main(int argc, const char * argv[]) {
                 [tranvseElements enumerateObjectsUsingBlock:^(GGZListNode *obj, NSUInteger idx, BOOL * _Nonnull stop) {
                     NSLog(@"ele-> %@",obj.data);
                 }];
-                
-                // 逆向遍历
-                NSLog(@"\n 逆向遍历\n");
-                NSMutableArray <GGZListNode *>* reverseTranvseElements = [singleLinklist reverseTraveseNodesNeededUseStack:NO];
-                [reverseTranvseElements enumerateObjectsUsingBlock:^(GGZListNode *obj, NSUInteger idx, BOOL * _Nonnull stop) {
-                    NSLog(@"ele-> %@",obj.data);
-                }];
-                
-                //寻找链表随后第k个元素
-                NSLog(@"\n 寻找链表倒数第k个元素\n");
-                GGZListNode *node = [singleLinklist reverseSearchWithReverseOrderNumber:2];
-                printfLinkList(node, ^(id data) {
+
+//                // 逆向遍历
+//                NSLog(@"\n 逆向遍历\n");
+//                NSMutableArray <GGZListNode *>* reverseTranvseElements = [singleLinklist reverseTraveseNodesNeededUseStack:NO];
+//                [reverseTranvseElements enumerateObjectsUsingBlock:^(GGZListNode *obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                    NSLog(@"ele-> %@",obj.data);
+//                }];
+//
+//                //寻找链表随后第k个元素
+//                NSLog(@"\n 寻找链表倒数第k个元素\n");
+//                GGZListNode *node = [singleLinklist reverseSearchWithReverseOrderNumber:2];
+//                printfLinkList(node, ^(id data) {
+//                    NSLog(@"\t %@ \t",data);
+//                });
+//
+                //删除指定节点
+                NSLog(@"\n 删除数据为2对应的节点\n");
+                GGZListNode *neededRemove = [[GGZListNode alloc] initWithKey:nil data:@2 next:nil];
+                [singleLinklist removeNode:neededRemove];
+                printfLinkList(singleLinklist.head, ^(id data) {
                     NSLog(@"\t %@ \t",data);
                 });
             }

@@ -48,7 +48,23 @@
 
 /// 删除元素
 - (void)removeNode:(GGZListNode *)node {
-    
+    if ([node.data integerValue] == [self.head.data integerValue]) {
+        self.head = self.head.next;
+    } else {
+        GGZListNode *fastPtr = self.head;
+        GGZListNode *slow    = self.head;
+        while (fastPtr) {
+            if ([fastPtr.data integerValue] == [node.data integerValue]) {
+                slow.next = fastPtr.next;
+                fastPtr = nil;
+                fastPtr = slow.next;
+            } else {
+                slow = fastPtr; //慢指针已到快指针的位置
+                fastPtr = fastPtr.next;//快指针向后移动一步
+            }
+        }
+        NSLog(@"");
+    }
 }
 
 /// 插入元素
@@ -56,7 +72,7 @@
     NSAssert(node == nil, @"node is not nill");
 }
 
-/// 逆向遍历
+/// 逆向遍历 || 反转链表
 /// 方式1: 使用栈FILO
 /// 方式2: 3指针方法
 - (NSMutableArray <GGZListNode *>*)reverseTraveseNodesNeededUseStack:(BOOL)neededUseStack {
@@ -78,7 +94,6 @@
 #endif
     return array;
 }
-
 
 - (GGZListNode *)reverseSearchWithReverseOrderNumber:(NSInteger)reverseOrderNumber {
     __block GGZListNode *node = nil;
@@ -121,16 +136,16 @@
 }
 
 + (GGZListNode *)mergeOrderLinkListWithFirst:(GGZListNode *)firstHead second:(GGZListNode *)secondHead; {
-//    //思路1：递归法，两个链表头部值较小的一个节点与剩下元素的 merge 操作结果合并，只可意会
-//    if (!firstHead)  return secondHead;
-//    if (!secondHead) return firstHead;
-//    if ([firstHead.data integerValue] < [secondHead.data integerValue]) {
-//        firstHead.next  = [self mergeOrderLinkListWithFirst:firstHead.next second:secondHead];
-//        return firstHead;
-//    } else {
-//        secondHead.next = [self mergeOrderLinkListWithFirst:firstHead second:secondHead.next];
-//        return secondHead;
-//    }
+    //    //思路1：递归法，两个链表头部值较小的一个节点与剩下元素的 merge 操作结果合并，只可意会
+    //    if (!firstHead)  return secondHead;
+    //    if (!secondHead) return firstHead;
+    //    if ([firstHead.data integerValue] < [secondHead.data integerValue]) {
+    //        firstHead.next  = [self mergeOrderLinkListWithFirst:firstHead.next second:secondHead];
+    //        return firstHead;
+    //    } else {
+    //        secondHead.next = [self mergeOrderLinkListWithFirst:firstHead second:secondHead.next];
+    //        return secondHead;
+    //    }
     
     //思路2: 非递归，新建一个空的链表，将其他两个链表合并的元素一一落入这个链表，只可意会
     GGZListNode *tempHead    = [[GGZListNode alloc] init]; //新的链表
