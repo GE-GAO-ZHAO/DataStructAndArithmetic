@@ -193,3 +193,21 @@
 }
 
 @end
+
+@implementation GGZSinglyLInkList (Iterator)
++ (void)printfLinkListWith:(GGZListNode *)head block:(Block)myblockl {
+    GGZListNode *curPtr = head;
+    while (curPtr) {
+        myblockl(curPtr.data);
+        curPtr = curPtr.next;
+    }
+}
+
+- (void)linkListIterator:(Block)myblock {
+    GGZListNode *curPtr = self.head;
+    while (curPtr) {
+        myblock(curPtr.data);
+        curPtr = curPtr.next;
+    }
+}
+@end

@@ -9,6 +9,8 @@
 #import "GGZListNode.h"
 NS_ASSUME_NONNULL_BEGIN
 
+typedef void(^Block)(id data);
+
 @interface GGZSinglyLInkList : NSObject
 
 @property (nonatomic,strong) GGZListNode *head;
@@ -40,5 +42,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 @end
+
+
+@interface GGZSinglyLInkList (Iterator)
++ (void)printfLinkListWith:(GGZListNode *)head block:(Block)myblockl;
+- (void)linkListIterator:(Block)myblock;
+
+@end
+
 
 NS_ASSUME_NONNULL_END
