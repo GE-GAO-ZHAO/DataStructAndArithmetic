@@ -19,12 +19,6 @@ typedef enum TestType {
 #import "GGZSinglyLInkList.h"
 #import "GGZListNode.h"
 
-typedef void(^MyBlock)(id data);
-
-#pragma mark --
-#pragma mark -- declaration
-void printfLinkList(GGZListNode *head,MyBlock myblock);
-
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
@@ -130,13 +124,4 @@ int main(int argc, const char * argv[]) {
         }
     }
     return 0;
-}
-
-#pragma mark --
-#pragma mark -- methods implementation
-void printfLinkList(GGZListNode *head,MyBlock myblock) {
-    while (head) {
-        myblock(head.data);
-        head = head.next;
-    }
 }
