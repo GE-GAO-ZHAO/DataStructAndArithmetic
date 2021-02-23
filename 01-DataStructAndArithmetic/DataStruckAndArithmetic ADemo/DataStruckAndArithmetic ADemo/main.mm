@@ -12,6 +12,8 @@ typedef enum TestType {
     TestTypeDeleteSpecialNode          = 3, //删除指定的节点
     TestTypeSearchReverseIndexNode     = 4, //找出倒数第k个节点
     TestTypeIsExcixtCirle              = 5, //判断是否存在环
+    TestTypeDeleteRepeationNode        = 6, //删除重复的节点
+    TestTypeDeleteRepeationNodeCount   = 7, //计算出连续重复的节点对应的次数
 } TestType;
 
 
@@ -23,7 +25,7 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         NSLog(@"Hello, World!");
-        TestType type = TestTypeSearchReverseIndexNode;
+        TestType type = TestTypeDeleteRepeationNode;
         switch (type) {
             case TestTypeLinkListInitOrTraverse: {
                 GGZSinglyLInkList *singleLinklist = [[GGZSinglyLInkList alloc] init];
@@ -117,6 +119,19 @@ int main(int argc, const char * argv[]) {
                 break;
             case TestTypeIsExcixtCirle: {
                 
+            }
+                break;
+            case TestTypeDeleteRepeationNode: {
+                GGZSinglyLInkList *singleLinklist = [[GGZSinglyLInkList alloc] init];
+                [singleLinklist addListNode:[[GGZListNode alloc] initWithKey:nil data:@3 next:nil]];
+                [singleLinklist addListNode:[[GGZListNode alloc] initWithKey:nil data:@3 next:nil]];
+                [singleLinklist addListNode:[[GGZListNode alloc] initWithKey:nil data:@4 next:nil]];
+                [singleLinklist addListNode:[[GGZListNode alloc] initWithKey:nil data:@1 next:nil]];
+                GGZListNode *head = [singleLinklist removeRepetitionNode];
+                NSLog(@"\n 删除连续重复的节点\n");
+                [GGZSinglyLInkList printfLinkListWith:head block:^(id  _Nonnull data) {
+                    NSLog(@"\t %@ \t",data);
+                }];
             }
                 break;
             default:

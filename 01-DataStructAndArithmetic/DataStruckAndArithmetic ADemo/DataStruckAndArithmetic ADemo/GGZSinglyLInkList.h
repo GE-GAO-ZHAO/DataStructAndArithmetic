@@ -27,6 +27,9 @@ typedef void(^Block)(id data);
 /// @brief 删除元素
 - (void)removeNode:(GGZListNode *)node;
 
+/// @brief 删除链表里连续重复元素，字节面试题
+- (GGZListNode *)removeRepetitionNode;
+
 /// @brief 插入元素
 - (void)insertNode:(GGZListNode *)node;
 

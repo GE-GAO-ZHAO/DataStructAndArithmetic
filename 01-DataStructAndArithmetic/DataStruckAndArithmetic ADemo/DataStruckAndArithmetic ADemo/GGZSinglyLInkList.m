@@ -67,6 +67,32 @@
     }
 }
 
+/// 删除链表里连续重复元素，字节面试题
+- (GGZListNode *)removeRepetitionNode {
+    //方式1: 多指针或者虚拟指针法
+//    if (!self.head) return self.head;
+    GGZListNode *dummyHead = [[GGZListNode alloc] init];//生命一个虚拟的head
+    dummyHead.next = self.head;//虚拟的head先指向真实的head
+    GGZListNode *prePtr = dummyHead;//构建一个前指针用于连接删除重复节点后剩余的节点
+    GGZListNode *curPtr = prePtr.next;//构建一个当前节点用户检索链表的所有元素，默认只想真实的头节点
+    while (curPtr) {
+        NSInteger    repeatCount = 0;    //构建当前元素在整个链表中重复的次数，用于后面是否删除的依据
+        GGZListNode *didCurPtr = curPtr; //构建一个真实的当前节点，用于和每一个遍历到的节点坐对比
+        while (didCurPtr && [didCurPtr.data integerValue] == [curPtr.data integerValue]) {
+            repeatCount++;
+            didCurPtr = didCurPtr.next;
+        }
+        //由于自己和自己肯定相等，所以repeatCount的值至少等于1，大于1代表you重复的节点
+        if (repeatCount > 1) {/*有和当前节点重复的节点，进行删除*/
+            prePtr.next = didCurPtr;//prePtr的next指向新的没有重复的节点
+        } else {/*没有和当前节点重复的节点*/
+            prePtr = curPtr; //移动prePtr到当前的指针
+        }
+        curPtr = curPtr.next; //继续下一个指针
+    }
+    return dummyHead.next;
+}
+
 /// 插入元素
 - (void)insertNode:(GGZListNode *)node {
     NSAssert(node == nil, @"node is not nill");
