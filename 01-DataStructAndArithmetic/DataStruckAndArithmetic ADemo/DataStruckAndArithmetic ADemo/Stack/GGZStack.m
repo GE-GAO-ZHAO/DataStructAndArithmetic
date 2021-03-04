@@ -38,7 +38,7 @@
 }
 
 - (id)pop {
-    NSAssert([self isEmpty], @"stack is have been empty");
+    NSAssert(![self isEmpty], @"stack is have been empty");
     id obj = [self.array objectAtIndex:(_stackSize -1)];
     [self deleteData:obj];
     return obj;
