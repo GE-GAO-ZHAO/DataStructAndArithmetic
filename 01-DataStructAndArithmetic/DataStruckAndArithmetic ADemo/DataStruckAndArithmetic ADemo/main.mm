@@ -17,7 +17,8 @@ typedef enum TestLinkListType {
 } TestLinkListType;
 
 typedef enum TestSimpleBinaryTreeType {
-    TestSimpleBinaryTreeTypeInitOrTraverse         = 0, //无规则初始化、遍历
+    TestSimpleBinaryTreeTypeInitOrTraverse                = 0, //无规则初始化、遍历
+    TestSimpleBinaryTreeTypeSecondBranchSearchTree        = 1, //规律的二叉搜索树
     
 } TestSimpleBinaryTreeType;
 

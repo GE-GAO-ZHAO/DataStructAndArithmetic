@@ -90,6 +90,30 @@
     }
 }
 
+#pragma mark --
+#pragma mark -- 二分查找
+/*
+              8
+      3              10
+  1       6                12
+        4   7
+ */
+- (BOOL)isExciteSpecialWithNode:(GGZSimpleBinaryNode *)node root:(GGZSimpleBinaryNode *)root {
+    GGZSimpleBinaryNode *movePtr = node;
+    BOOL isExcite = NO;
+    while (movePtr) {
+        if ([movePtr.data integerValue] > [[node data] integerValue]) {
+            movePtr = movePtr.left;
+        } else if ([movePtr.data integerValue] < [[node data] integerValue]) {
+            movePtr = movePtr.right;
+        } else {
+            isExcite = YES;
+            break;;
+        }
+    }
+    return isExcite;
+}
+
 @end
 
 

@@ -33,6 +33,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// @brief 按层级打印
 - (void)hierarchyTraverseWithRootNode:(GGZSimpleBinaryNode *)node;
+
+/// @brief 二叉查找法判断某一个元素是否存在
+- (BOOL)isExciteSpecialWithNode:(GGZSimpleBinaryNode *)node root:(GGZSimpleBinaryNode *)root;
+  
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END
