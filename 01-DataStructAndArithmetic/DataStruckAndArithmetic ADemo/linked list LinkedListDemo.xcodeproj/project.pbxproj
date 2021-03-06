@@ -13,6 +13,8 @@
 		312F6FD225DD1D3900FFC7C0 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 312F6FCB25DD1D3900FFC7C0 /* main.mm */; };
 		312F6FD325DD1D3900FFC7C0 /* GGZStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 312F6FCE25DD1D3900FFC7C0 /* GGZStack.m */; };
 		3149052025E535DD0014F788 /* 树.txt in Sources */ = {isa = PBXBuildFile; fileRef = 3149051F25E535DD0014F788 /* 树.txt */; };
+		3167245F25F0E4AC00B4F8F5 /* NSStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 3167245E25F0E4AC00B4F8F5 /* NSStack.m */; };
+		3167265C25F373EB00B4F8F5 /* NSQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = 3167265B25F373EB00B4F8F5 /* NSQueue.m */; };
 		3191240B25E23D9100DCFD16 /* NSObject+LOG.m in Sources */ = {isa = PBXBuildFile; fileRef = 3191240A25E23D9100DCFD16 /* NSObject+LOG.m */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +42,11 @@
 		312F6FCD25DD1D3900FFC7C0 /* GGZSinglyLInkList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGZSinglyLInkList.h; sourceTree = "<group>"; };
 		312F6FCE25DD1D3900FFC7C0 /* GGZStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGZStack.m; sourceTree = "<group>"; };
 		3149051F25E535DD0014F788 /* 树.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "树.txt"; sourceTree = "<group>"; };
+		3167245D25F0E4AC00B4F8F5 /* NSStack.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSStack.h; sourceTree = "<group>"; };
+		3167245E25F0E4AC00B4F8F5 /* NSStack.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSStack.m; sourceTree = "<group>"; };
+		3167265725F36F6900B4F8F5 /* 队列.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "队列.txt"; sourceTree = "<group>"; };
+		3167265A25F373EB00B4F8F5 /* NSQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSQueue.h; sourceTree = "<group>"; };
+		3167265B25F373EB00B4F8F5 /* NSQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSQueue.m; sourceTree = "<group>"; };
 		3191240625E20CFF00DCFD16 /* dataArithmeticSolution.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = dataArithmeticSolution.txt; sourceTree = "<group>"; };
 		3191240925E23D9100DCFD16 /* NSObject+LOG.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+LOG.h"; sourceTree = "<group>"; };
 		3191240A25E23D9100DCFD16 /* NSObject+LOG.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+LOG.m"; sourceTree = "<group>"; };
@@ -60,6 +67,7 @@
 		312F6FC525DD1D3900FFC7C0 /* DataStruckAndArithmetic ADemo */ = {
 			isa = PBXGroup;
 			children = (
+				3167265925F373D900B4F8F5 /* Queue */,
 				3149052525E5FE970014F788 /* Tree */,
 				3149052425E5FE8B0014F788 /* LinkList */,
 				3149052325E5FE850014F788 /* Stack */,
@@ -74,6 +82,8 @@
 			children = (
 				312F6FC925DD1D3900FFC7C0 /* GGZStack.h */,
 				312F6FCE25DD1D3900FFC7C0 /* GGZStack.m */,
+				3167245D25F0E4AC00B4F8F5 /* NSStack.h */,
+				3167245E25F0E4AC00B4F8F5 /* NSStack.m */,
 			);
 			path = Stack;
 			sourceTree = "<group>";
@@ -98,6 +108,15 @@
 			path = Tree;
 			sourceTree = "<group>";
 		};
+		3167265925F373D900B4F8F5 /* Queue */ = {
+			isa = PBXGroup;
+			children = (
+				3167265A25F373EB00B4F8F5 /* NSQueue.h */,
+				3167265B25F373EB00B4F8F5 /* NSQueue.m */,
+			);
+			path = Queue;
+			sourceTree = "<group>";
+		};
 		3191240825E23A8500DCFD16 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,6 +129,7 @@
 		31A8F84A25DBFF9D009C84AD = {
 			isa = PBXGroup;
 			children = (
+				3167265725F36F6900B4F8F5 /* 队列.txt */,
 				3149051F25E535DD0014F788 /* 树.txt */,
 				312F6FC425DD1D3900FFC7C0 /* 链表.txt */,
 				3191240625E20CFF00DCFD16 /* dataArithmeticSolution.txt */,
@@ -185,7 +205,9 @@
 				312F6FD025DD1D3900FFC7C0 /* GGZSinglyLInkList.m in Sources */,
 				312F6FCF25DD1D3900FFC7C0 /* GGZSimpleBinaryTree.m in Sources */,
 				3191240B25E23D9100DCFD16 /* NSObject+LOG.m in Sources */,
+				3167245F25F0E4AC00B4F8F5 /* NSStack.m in Sources */,
 				312F6FD225DD1D3900FFC7C0 /* main.mm in Sources */,
+				3167265C25F373EB00B4F8F5 /* NSQueue.m in Sources */,
 				312F6FD325DD1D3900FFC7C0 /* GGZStack.m in Sources */,
 				312F6FD125DD1D3900FFC7C0 /* GGZListNode.m in Sources */,
 				3149052025E535DD0014F788 /* 树.txt in Sources */,

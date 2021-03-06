@@ -22,13 +22,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initTreeWith:(NSArray <ObjectType>*)nodes size:(NSInteger)size;
 - (void)inserTreeNodeWithCurNode:(GGZSimpleBinaryNode *)curNode left:(GGZSimpleBinaryNode *)left right:(GGZSimpleBinaryNode *)right;
+
+/// @brief 递归：中序、前序、后续
 - (void)previousOrderTraverseWithRootNode:(GGZSimpleBinaryNode *)node;
 - (void)middleOrderTraverseWithRootNode:(GGZSimpleBinaryNode *)node;
 - (void)postOrderTraverseWithRootNode:(GGZSimpleBinaryNode *)node;
-- (void)hierarchyTraverseWithRootNode:(GGZSimpleBinaryNode *)node;
+
+/// @brief 非递归中序
 - (void)middleOrderTraverseByStackWithRootNode:(GGZSimpleBinaryNode *)node;
 
-
+/// @brief 按层级打印
+- (void)hierarchyTraverseWithRootNode:(GGZSimpleBinaryNode *)node;
 @end
 
 NS_ASSUME_NONNULL_END

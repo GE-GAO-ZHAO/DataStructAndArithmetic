@@ -6,7 +6,8 @@
 //
 
 #import "GGZSimpleBinaryTree.h"
-#import "GGZStack.h"
+#import "NSStack.h"
+#import "NSQueue.h"
 @implementation GGZSimpleBinaryTree
 
 - (instancetype)initTreeWith:(NSArray <id>*)nodes size:(NSInteger)size {
@@ -54,7 +55,7 @@
 #pragma mark -- 非递归
 - (void)middleOrderTraverseByStackWithRootNode:(GGZSimpleBinaryNode *)node {
     if (!node) return;
-    GGZStack *stack = [[GGZStack alloc] initWithSize:20];
+    NSStack *stack = [[NSStack alloc] initWithSize:20];
     GGZSimpleBinaryNode *movePtr = node;
     while (stack.top || nil != movePtr ) {
         //找最左边，一条道走到底，走到movePtr为空代表最左侧节点走到底啦
@@ -75,7 +76,18 @@
 #pragma mark --
 #pragma mark -- 按层级遍历
 - (void)hierarchyTraverseWithRootNode:(GGZSimpleBinaryNode *)node {
-    
+    NSQueue *queue = [[NSQueue alloc] initWithCapacity:20];
+    [queue push:node];
+    while (![queue isEmpty]) {
+        GGZSimpleBinaryNode *tempNode = [queue pop];
+        NSLog(@"%@",tempNode.data);
+        if (nil != tempNode.left) {
+            [queue push:tempNode.left];
+        }
+        if (nil != tempNode.right) {
+            [queue push:tempNode.right];
+        }
+    }
 }
 
 @end

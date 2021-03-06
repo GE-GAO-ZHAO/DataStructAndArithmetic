@@ -61,18 +61,26 @@ void testSimpleBinaryTree() {
             NSLog(@"前序遍历");
             [tree previousOrderTraverseWithRootNode:tree.root];
             NSLog(@"前序遍历 end\n");
+            
             /*中序遍历*/
             NSLog(@"中序遍历");
             [tree middleOrderTraverseWithRootNode:tree.root];
             NSLog(@"中序遍历 end\n");
+            
             /*后序遍历*/
             NSLog(@"后序遍历");
             [tree postOrderTraverseWithRootNode:tree.root];
             NSLog(@"后序遍历 end\n");
+            
             /*中序非递归遍历*/
             NSLog(@"中序非递归");
             [tree middleOrderTraverseByStackWithRootNode:tree.root];
             NSLog(@"中序非递归 end\n");
+            
+            /*层级遍历*/
+            NSLog(@"层级遍历");
+            [tree hierarchyTraverseWithRootNode:tree.root];
+            NSLog(@"层级遍历 end\n");
             
         }
             break;
