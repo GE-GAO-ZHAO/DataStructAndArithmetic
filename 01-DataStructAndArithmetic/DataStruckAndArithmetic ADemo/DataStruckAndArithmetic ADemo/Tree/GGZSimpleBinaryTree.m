@@ -101,7 +101,7 @@
 - (BOOL)isExciteSpecialWithNode:(GGZSimpleBinaryNode *)node root:(GGZSimpleBinaryNode *)root {
     GGZSimpleBinaryNode *movePtr = node;
     BOOL isExcite = NO;
-    while (movePtr) {
+    while (nil != movePtr) {
         if ([movePtr.data integerValue] > [[node data] integerValue]) {
             movePtr = movePtr.left;
         } else if ([movePtr.data integerValue] < [[node data] integerValue]) {
