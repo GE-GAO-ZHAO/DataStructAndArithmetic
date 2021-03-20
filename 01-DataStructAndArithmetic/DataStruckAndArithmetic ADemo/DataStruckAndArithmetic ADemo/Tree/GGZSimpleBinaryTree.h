@@ -37,6 +37,13 @@ NS_ASSUME_NONNULL_BEGIN
 /// @brief 二叉查找法判断某一个元素是否存在
 - (BOOL)isExciteSpecialWithNode:(GGZSimpleBinaryNode *)node root:(GGZSimpleBinaryNode *)root;
   
+/// @brief 是否是平衡二叉树
+- (BOOL)isBalanceTree:(GGZSimpleBinaryNode *)node;
+
+/// @brief 字节面试：输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径。从树的根节点开始往下一直到叶节点所经过的节点形成一条路径。
+/// @link     leetcode原题：https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/
+/// @return 返回所有和为sum的路径信息，可能汉堡多条
+- (NSMutableArray <NSMutableArray *> *)hasPathWithRoot:(GGZSimpleBinaryNode *)root sum:(NSInteger)sum;
 
 
 

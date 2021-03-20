@@ -8,7 +8,25 @@
 #import "GGZSimpleBinaryTree.h"
 #import "NSStack.h"
 #import "NSQueue.h"
+
+@interface GGZSimpleBinaryTree()
+
+#pragma mark --
+@property (nonatomic,strong) NSMutableArray <NSNumber*> *path;/*维护一条路径*/
+@property (nonatomic,strong) NSMutableArray <NSMutableArray *> *paths;/*维护多条路径*/
+
+@end
+
 @implementation GGZSimpleBinaryTree
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.paths = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (instancetype)initTreeWith:(NSArray <id>*)nodes size:(NSInteger)size {
 //    for (int i; i < size; ++i) {
@@ -57,7 +75,7 @@
     if (!node) return;
     NSStack *stack = [[NSStack alloc] initWithSize:20];
     GGZSimpleBinaryNode *movePtr = node;
-    while (stack.top || nil != movePtr ) {
+    while (stack.top || nil != movePtr) {
         //找最左边，一条道走到底，走到movePtr为空代表最左侧节点走到底啦
         while (nil != movePtr) {
             [stack push:movePtr];
@@ -112,6 +130,36 @@
         }
     }
     return isExcite;
+}
+
+/// @brief 是否是平衡二叉树
+- (BOOL)isBalanceTree:(GGZSimpleBinaryNode *)node {
+    BOOL isBalanceTree = NO;
+    
+    
+    return isBalanceTree;
+}
+
+/// @brief 获取二叉树和为某一个目标值的所有路径
+/// @Des     主要考察1.把tartget分解 2.切记只有最后一个节点没有子叶子树才是合法的一条路径
+- (NSMutableArray <NSMutableArray *> *)hasPathWithRoot:(GGZSimpleBinaryNode *)root sum:(NSInteger)sum {
+    [self getResHasPathWithRoot:root target:sum];
+    return self.paths;
+}
+
+- (void)getResHasPathWithRoot:(GGZSimpleBinaryNode *)root target:(NSInteger)target {
+    if (nil != root) {
+        target -= [root.data integerValue];
+        [self.path addObject:[NSNumber numberWithInteger:[root.data integerValue]]];
+        if (target == 0 && nil == root.left && nil == root.right) {
+            //找到和为tagrt并且没有叶子节点的节点
+            [self.paths addObject:self.path];
+        } else {
+            [self getResHasPathWithRoot:root.left target:target];
+            [self getResHasPathWithRoot:root.right target:target];
+        }
+        [self.path removeLastObject];
+    }
 }
 
 @end
