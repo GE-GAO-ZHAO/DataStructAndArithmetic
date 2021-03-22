@@ -23,6 +23,7 @@
 {
     self = [super init];
     if (self) {
+        self.path = [[NSMutableArray alloc] init];
         self.paths = [[NSMutableArray alloc] init];
     }
     return self;
@@ -40,7 +41,9 @@
     return nil;
 }
 
-- (void)inserTreeNodeWithCurNode:(GGZSimpleBinaryNode *)curNode left:(GGZSimpleBinaryNode *)left right:(GGZSimpleBinaryNode *)right {
+- (void)inserTreeNodeWithCurNode:(GGZSimpleBinaryNode * _Nullable)curNode
+                            left:(GGZSimpleBinaryNode * _Nullable)left
+                           right:(GGZSimpleBinaryNode * _Nullable)right {
     curNode.left = left;
     curNode.right = right;
 }
@@ -141,22 +144,23 @@
 }
 
 /// @brief 获取二叉树和为某一个目标值的所有路径
-/// @Des     主要考察1.把tartget分解 2.切记只有最后一个节点没有子叶子树才是合法的一条路径
 - (NSMutableArray <NSMutableArray *> *)hasPathWithRoot:(GGZSimpleBinaryNode *)root sum:(NSInteger)sum {
     [self getResHasPathWithRoot:root target:sum];
     return self.paths;
 }
 
+/// @Des  主要考察1.把tartget分解 2.切记只有最后一个节点没有子叶子树才是合法的一条路径
 - (void)getResHasPathWithRoot:(GGZSimpleBinaryNode *)root target:(NSInteger)target {
     if (nil != root) {
-        target -= [root.data integerValue];
-        [self.path addObject:[NSNumber numberWithInteger:[root.data integerValue]]];
-        if (target == 0 && nil == root.left && nil == root.right) {
-            //找到和为tagrt并且没有叶子节点的节点
-            [self.paths addObject:self.path];
-        } else {
-            [self getResHasPathWithRoot:root.left target:target];
-            [self getResHasPathWithRoot:root.right target:target];
+        [self.path addObject:root.data];
+        if ([root.data integerValue] == target && nil == root.left && nil == root.right) {/*合法路径*/
+            [self.paths addObject:[NSMutableArray arrayWithArray:self.path]];
+        }
+        if ([root.data integerValue] <= target && nil != root.left) {
+            [self getResHasPathWithRoot:root.left target:(target - [root.data integerValue])];
+        }
+        if ([root.data integerValue] <= target && nil != root.right) {
+            [self getResHasPathWithRoot:root.right target:(target - [root.data integerValue])];
         }
         [self.path removeLastObject];
     }

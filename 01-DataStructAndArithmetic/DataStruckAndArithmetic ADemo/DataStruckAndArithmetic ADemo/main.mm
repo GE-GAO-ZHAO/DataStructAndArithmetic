@@ -19,6 +19,7 @@ typedef enum TestLinkListType {
 typedef enum TestSimpleBinaryTreeType {
     TestSimpleBinaryTreeTypeInitOrTraverse                = 0, //无规则初始化、遍历
     TestSimpleBinaryTreeTypeSecondBranchSearchTree        = 1, //规律的二叉搜索树
+    TestSimpleBinaryTreeTypeSecondBranchResumeQuestion    = 2  //常见面试题
     
 } TestSimpleBinaryTreeType;
 
@@ -42,7 +43,7 @@ int main(int argc, const char * argv[]) {
 }
 
 void testSimpleBinaryTree() {
-    TestSimpleBinaryTreeType type = TestSimpleBinaryTreeTypeInitOrTraverse;
+    TestSimpleBinaryTreeType type = TestSimpleBinaryTreeTypeSecondBranchResumeQuestion;
     switch (type) {
         case TestSimpleBinaryTreeTypeInitOrTraverse: {
             GGZSimpleBinaryNode *nodeA = [[GGZSimpleBinaryNode alloc] initWithData:@"A"];
@@ -82,6 +83,41 @@ void testSimpleBinaryTree() {
             NSLog(@"层级遍历");
             [tree hierarchyTraverseWithRootNode:tree.root];
             NSLog(@"层级遍历 end\n");
+            
+        }
+            break;
+        case TestSimpleBinaryTreeTypeSecondBranchResumeQuestion: {
+            /*
+                                          5
+                                     /          \
+                                    4            8
+                                  /           /     \
+                                11           13      7
+             */
+            GGZSimpleBinaryNode *node1 = [[GGZSimpleBinaryNode alloc] initWithData:[NSNumber numberWithInteger:(5)]];
+            GGZSimpleBinaryNode *node2 = [[GGZSimpleBinaryNode alloc] initWithData:[NSNumber numberWithInteger:(4)]];
+            GGZSimpleBinaryNode *node3 = [[GGZSimpleBinaryNode alloc] initWithData:[NSNumber numberWithInteger:(8)]];
+            GGZSimpleBinaryNode *node5 = [[GGZSimpleBinaryNode alloc] initWithData:[NSNumber numberWithInteger:(11)]];
+            GGZSimpleBinaryNode *node8 = [[GGZSimpleBinaryNode alloc] initWithData:[NSNumber numberWithInteger:(13)]];
+            GGZSimpleBinaryNode *node9 = [[GGZSimpleBinaryNode alloc] initWithData:[NSNumber numberWithInteger:(7)]];
+            GGZSimpleBinaryTree *tree = [[GGZSimpleBinaryTree alloc] init];
+            [tree inserTreeNodeWithCurNode:node1 left:node2 right:node3];
+            [tree inserTreeNodeWithCurNode:node2 left:node5 right:nil];
+            [tree inserTreeNodeWithCurNode:node3 left:node8 right:node9];
+            tree.root = node1;
+            
+            //面试题1: 输入一棵二叉树和一个整数，打印出二叉树中节点值的和为输入整数的所有路径
+            //leetcode原题：https://leetcode-cn.com/problems/er-cha-shu-zhong-he-wei-mou-yi-zhi-de-lu-jing-lcof/
+            NSMutableArray <NSMutableArray *> *paths = [tree hasPathWithRoot:tree.root sum:20];
+            [paths enumerateObjectsUsingBlock:^(NSMutableArray * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSString *path = [NSString stringWithFormat:@""];
+                for (NSNumber *number in obj) {
+                    path = [path stringByAppendingFormat:@"\t%lu\t",[number integerValue]];
+                }
+                NSLog(@"第%lu条路径 info:%@\n ",idx+1,path);
+            }];
+            
+            
             
         }
             break;
